@@ -17,6 +17,7 @@ class TemperaturaProvider extends ChangeNotifier {
 
   getTemperaturas() async {
     var uri = Uri.parse('${service.urlBase}support/test?id=42323');
+    // var uri = Uri.parse('${service.urlBase}support/arduino');
     final response = await http.get(uri);
     final responseJson = service.getResponse(response.body);
     final temperaturas = Temperaturas.fromJsonList(responseJson);
