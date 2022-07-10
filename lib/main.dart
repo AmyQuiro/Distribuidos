@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_listas/provider/TemperaturaProvider.dart';
 import 'package:flutter_application_listas/provider/provider_t.dart';
+import 'package:flutter_application_listas/views/home_notificacion.dart';
 import 'package:flutter_application_listas/views/home_page2.dart';
+import 'package:flutter_application_listas/views/message_screen.dart';
 import 'package:flutter_application_listas/views/screens.dart';
 import 'package:provider/provider.dart';
 
@@ -31,11 +33,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'LISTAS',
-      initialRoute: 'homePage2',
+      initialRoute: 'homeNoti',
       routes: {
         'homePage': (_) => HomePage(),
         'list': (_) => TemperaturaView(),
         'homePage2': (_) => HomePage2(),
+        'homeNoti': (_) => HomeNotificacion(),
+        'Message': (_) => MessageScreen(),
       },
     );
   }

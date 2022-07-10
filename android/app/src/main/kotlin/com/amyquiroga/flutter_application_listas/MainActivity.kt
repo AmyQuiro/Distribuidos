@@ -1,4 +1,4 @@
-package com.example.flutter_application_listas
+package com.amyquiroga.flutter_application_listas
 
 import io.flutter.embedding.android.FlutterActivity
 
