@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_listas/modelo/DispositivosModel.dart';
-import 'package:flutter_application_listas/views/home_page.dart';
+
+import 'package:flutter_application_listas/views/temp_view.dart';
 
 class listDispositivos extends StatelessWidget {
   const listDispositivos({
@@ -36,15 +37,12 @@ class listDispositivos extends StatelessWidget {
           ),
           trailing: const Icon(Icons.arrow_forward_ios_outlined),
           onTap: () {
-            // String datos = options[i];
-
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HomePage()
-                  //       builder: (context) => GraphView(
-                  //             data: datos,
-                  //           )
-                  ),
+              MaterialPageRoute(
+                  builder: (context) => TemperaturaHome(
+                        dispositivo: options[i],
+                      )),
             );
           }),
       separatorBuilder: (_, __) => const Divider(),

@@ -5,14 +5,14 @@ import 'package:flutter_application_listas/provider/dispositivoProvider.dart';
 import 'package:flutter_application_listas/views/disp_view.dart';
 import 'package:provider/provider.dart';
 
-class HomePage2 extends StatefulWidget {
-  const HomePage2({Key? key}) : super(key: key);
+class DispositivoHome extends StatefulWidget {
+  const DispositivoHome({Key? key}) : super(key: key);
 
   @override
-  State<HomePage2> createState() => _HomePage2State();
+  State<DispositivoHome> createState() => _DispositivoHomeState();
 }
 
-class _HomePage2State extends State<HomePage2> {
+class _DispositivoHomeState extends State<DispositivoHome> {
   List<DispositivoModel>? dispositivo;
   var isLoaded = false;
   @override

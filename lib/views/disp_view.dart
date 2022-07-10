@@ -20,7 +20,6 @@ class _DispositivosViewState extends State<DispositivosView> {
   Widget build(BuildContext context) {
     final tempProvider = Provider.of<dispositivoProvider>(context);
 
-    var listTempetura = ListTempetura;
     return Scaffold(
         appBar: AppBar(
           title: const Text('Lista de Dispositivos'),

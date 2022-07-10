@@ -15,9 +15,9 @@ class Temperaturas {
 
 class TemperaturaModel {
   late String id;
-  late String temperatura;
-  late String humedad;
-  late String tiempo;
+  late double temperatura;
+  late double humedad;
+  late DateTime tiempo;
 
   TemperaturaModel({
     required this.id,
@@ -29,8 +29,28 @@ class TemperaturaModel {
   // ignore: non_constant_identifier_names
   TemperaturaModel.fromJsonMap(Map<String, dynamic> json) {
     id = json['id'];
-    temperatura = json['temperatura'];
-    humedad = json['humedad'];
-    tiempo = json['tiempo'];
+    temperatura = (json['temperatura']).toDouble();
+    humedad = (json['humedad']).toDouble();
+    tiempo = DateTime.parse(json['tiempo']);
+  }
+
+  // int getTemp() {
+  //   if (temperatura) {
+  //     return 0;
+  //   }
+  //   return 24;
+
+  //   // return int.parse(temperatura);
+  // }
+
+  getTime() {
+    final response =
+        tiempo.minute.toDouble() + (tiempo.second.toDouble() * 0.01);
+    // print(response);
+    return response;
+    // if (tiempo.isEmpty) {
+    //   return 20;
+    // }
+    // return 25;
   }
 }

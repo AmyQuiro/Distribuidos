@@ -10,20 +10,35 @@ class TemperaturaProvider extends ChangeNotifier {
   API service = API();
   List<TemperaturaModel> listTemperaturas = [];
 
-  TemperaturaProvider() {
+  TemperaturaProvider({required idDispositivo}) {
     print('TemperaturaProvider inicializado');
-    getTemperaturas();
+    getTemperaturas(idDispositivo: idDispositivo);
   }
 
-  getTemperaturas() async {
-    var uri = Uri.parse('${service.urlBase}support/test?id=42323');
-    // var uri = Uri.parse('${service.urlBase}support/arduino');
+  getTemperaturas({required idDispositivo}) async {
+    var uri = Uri.parse(
+      '${service.urlBase}support/test?id=$idDispositivo',
+    );
+
     final response = await http.get(uri);
     final responseJson = service.getResponse(response.body);
     final temperaturas = Temperaturas.fromJsonList(responseJson);
 
     listTemperaturas = temperaturas.items;
     notifyListeners();
-    // return temperaturas.items;
+  }
+
+  Future<List<TemperaturaModel>> getUltimasTemeperaturas(
+      {required idDispositivo}) async {
+    DateTime now = DateTime.now();
+    var uri = Uri.parse(
+      '${service.urlBase}support/ultimasTemperaturas?id=$idDispositivo&${now.toString()}',
+    );
+
+    final response = await http.get(uri);
+    final responseJson = service.getResponse(response.body);
+    final responseTemperaturas = Temperaturas.fromJsonList(responseJson);
+    print(responseTemperaturas.items);
+    return responseTemperaturas.items;
   }
 }
