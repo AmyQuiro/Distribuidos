@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_application_listas">
+    package="com.amyquiroga.flutter_application_listas">
    <application
         android:label="flutter_application_listas"
         android:name="${applicationName}"
