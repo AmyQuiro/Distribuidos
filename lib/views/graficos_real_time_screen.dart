@@ -84,7 +84,7 @@ class _GraficosRealTimeScreenState extends State<GraficosRealTimeScreenF> {
   }
 
   void getDatosEnVivo({required provider}) {
-    // Timer.periodic(const Duration(seconds: 2),
+    // Timer.periodic(const Duration(seconds: 7),
     //     (timer) => {updateDataSource(provider: provider)});
   }
 
