@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application_listas/modelo/TemperaturaModel.dart';
 
@@ -17,12 +19,12 @@ class TemperaturaProvider extends ChangeNotifier {
 
   getTemperaturas({required idDispositivo}) async {
     var uri = Uri.parse(
-      '${service.urlBase}support/test?id=$idDispositivo',
+      '${service.urlBase}getHistorialPorDia/${idDispositivo}',
     );
 
     final response = await http.get(uri);
-    final responseJson = service.getResponse(response.body);
-    final temperaturas = Temperaturas.fromJsonList(responseJson);
+
+    final temperaturas = Temperaturas.fromJsonList(json.decode(response.body));
 
     listTemperaturas = temperaturas.items;
     notifyListeners();

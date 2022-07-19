@@ -28,10 +28,10 @@ class TemperaturaModel {
 
   // ignore: non_constant_identifier_names
   TemperaturaModel.fromJsonMap(Map<String, dynamic> json) {
-    id = json['id'];
-    temperatura = (json['temperatura']).toDouble();
-    humedad = (json['humedad']).toDouble();
-    tiempo = DateTime.parse(json['tiempo']);
+    id = '1';
+    temperatura = double.parse(json['temp']);
+    humedad = 99.0;
+    tiempo = DateTime.parse(json['time']);
   }
 
   // int getTemp() {

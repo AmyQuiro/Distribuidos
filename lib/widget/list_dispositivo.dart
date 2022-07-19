@@ -44,11 +44,12 @@ class listTDispositivos extends StatelessWidget {
           ),
           trailing: const Icon(Icons.arrow_forward_ios_outlined),
           onTap: () {
+            final myDispositivo = dispositivos[i];
             Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) =>
-                      const GraficosRealTimeScreen(idDispositivo: '')),
+                      GraficosRealTimeScreen(idDispositivo: myDispositivo.id)),
             );
           }),
       separatorBuilder: (_, __) => const Divider(),
