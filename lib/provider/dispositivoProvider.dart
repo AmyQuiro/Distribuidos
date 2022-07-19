@@ -6,8 +6,6 @@ import 'dart:async';
 
 import 'package:http/http.dart' as http;
 
-import '../modelo/TemperaturaModel.dart';
-
 class dispositivoProvider extends ChangeNotifier {
   API service = API();
   List<DispositivoModel> listDispositivos = [];

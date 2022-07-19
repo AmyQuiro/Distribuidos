@@ -6,7 +6,10 @@ import 'package:flutter_application_listas/provider/TemperaturaProvider.dart';
 import 'package:flutter_application_listas/provider/dispositivoProvider.dart';
 import 'package:flutter_application_listas/provider/provider_t.dart';
 import 'package:flutter_application_listas/views/disp_view.dart';
+import 'package:flutter_application_listas/views/dispositivos_view.dart';
+import 'package:flutter_application_listas/views/graf_mes.dart';
 import 'package:flutter_application_listas/views/graficos_real_time_screen.dart';
+import 'package:flutter_application_listas/views/graficos_x_mes.dart';
 import 'package:flutter_application_listas/views/home_notificacion.dart';
 import 'package:flutter_application_listas/views/home_page2.dart';
 import 'package:flutter_application_listas/views/message_screen.dart';
@@ -67,8 +70,9 @@ class _MyAppState extends State<MyApp> {
     });
 
     //context
+
     PushNotificationService.messageStream.listen((message) {
-      navigatorKey.currentState?.pushNamed('message', arguments: message);
+      navigatorKey.currentState?.pushNamed('homePage2');
       final snackBar = SnackBar(content: Text(message));
       messengerKey.currentState?.showSnackBar(snackBar);
     });
@@ -87,13 +91,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'LISTAS',
-      initialRoute: 'homeNoti',
+      initialRoute: 'principal',
       navigatorKey: navigatorKey, //navegar
       scaffoldMessengerKey: messengerKey, //sancks
       routes: {
         'homePage2': (_) => DispositivoHome(),
         'homeNoti': (_) => HomeNotificacion(),
         'message': (_) => MessageScreen(),
+        'GrafMes': (_) => GraficosMes(),
+        'principal': (_) => DispositivoView(),
       },
     );
   }

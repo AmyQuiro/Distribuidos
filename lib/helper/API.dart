@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 class API {
-  final String urlBase =
-      "https://staginggatewayservicios.multipago.com/api/v1/";
+  // final String urlBase =
+  //     "https://staginggatewayservicios.multipago.com/api/v1/";
+  final String urlBase = 'https://distribuidos-api.herokuapp.com/';
 
   getResponse(dynamic body) {
     final response = new APIResponse.fromJsonMap(json.decode(body));
