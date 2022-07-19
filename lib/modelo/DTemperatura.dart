@@ -33,10 +33,11 @@ class DTemperaturaModel {
 
   // ignore: non_constant_identifier_names
   DTemperaturaModel.fromJsonMap(Map<String, dynamic> json) {
+    final tiempo = json['time'] != null ? json['time'] : json['ultimoRegistro'];
     id = (json['id']).toString();
     temperatura = double.parse(json['temp']);
     humedad = double.parse(json['hum']);
-    ultimoRegistro = DateTime.parse(json['ultimoRegistro']);
+    ultimoRegistro = DateTime.parse(tiempo);
     estado = (json['estado']).toString().toLowerCase() == 'true';
   }
 

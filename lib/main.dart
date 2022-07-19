@@ -5,13 +5,11 @@ import 'package:flutter_application_listas/modelo/dispositivosModel.dart';
 import 'package:flutter_application_listas/provider/TemperaturaProvider.dart';
 import 'package:flutter_application_listas/provider/dTemperaturaProvider.dart';
 import 'package:flutter_application_listas/provider/provider_t.dart';
-import 'package:flutter_application_listas/views/disp_view.dart';
 import 'package:flutter_application_listas/views/dispositivos_view.dart';
 import 'package:flutter_application_listas/views/graf_mes.dart';
 import 'package:flutter_application_listas/views/graficos_real_time_screen.dart';
 import 'package:flutter_application_listas/views/graficos_x_mes.dart';
 import 'package:flutter_application_listas/views/home_notificacion.dart';
-import 'package:flutter_application_listas/views/home_page2.dart';
 import 'package:flutter_application_listas/views/message_screen.dart';
 import 'package:flutter_application_listas/views/screens.dart';
 import 'package:provider/provider.dart';
@@ -29,11 +27,14 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => TemperaturaProvider(idDispositivo: ""),
+          create: (_) => DTemperaturaProvider(),
+          child: DispositivoView(),
         ),
         ChangeNotifierProvider(
-          create: (_) => dTemperaturaProvider(),
-          child: DispositivoView(),
+          create: (_) => DTemperaturaProvider(),
+          child: GraficosRealTimeScreen(
+            idDispositivo: '',
+          ),
         ),
       ],
       child: MyApp(),

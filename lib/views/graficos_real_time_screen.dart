@@ -17,7 +17,7 @@ class GraficosRealTimeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => TemperaturaProvider(idDispositivo: idDispositivo),
+      create: (_) => DTemperaturaProvider(),
       child: GraficosRealTimeScreenF(
         idDispositivo: idDispositivo,
       ),
@@ -48,15 +48,16 @@ class _GraficosRealTimeScreenState extends State<GraficosRealTimeScreenF> {
   @override
   Widget build(BuildContext context) {
     var tempProvider = Provider.of<DTemperaturaProvider>(context);
+    tempProvider.getUltimasTemeperaturas(idDispositivo: widget.idDispositivo);
     getDatosEnVivo(provider: tempProvider);
 
-    if (tempProvider.listDTemperaturas.isEmpty) {
+    if (tempProvider.listUltimasTemperaturas.isEmpty) {
       return const Scaffold(
           body: Center(
         child: CircularProgressIndicator(),
       ));
     }
-    chartData = tempProvider.listDTemperaturas;
+    chartData = tempProvider.listUltimasTemperaturas;
     return SafeArea(
         child: Scaffold(
             body: SfCartesianChart(
@@ -83,8 +84,8 @@ class _GraficosRealTimeScreenState extends State<GraficosRealTimeScreenF> {
   }
 
   void getDatosEnVivo({required provider}) {
-    Timer.periodic(const Duration(seconds: 2),
-        (timer) => {updateDataSource(provider: provider)});
+    // Timer.periodic(const Duration(seconds: 2),
+    //     (timer) => {updateDataSource(provider: provider)});
   }
 
   int time = 19;

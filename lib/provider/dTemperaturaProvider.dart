@@ -13,6 +13,7 @@ import '../modelo/DTemperatura.dart';
 class DTemperaturaProvider extends ChangeNotifier {
   API service = API();
   List<DTemperaturaModel> listDTemperaturas = [];
+  List<DTemperaturaModel> listUltimasTemperaturas = [];
 
   /*DTemperaturaProvider({required String idDispositivo}) {
     print('DTemperaturaProvider inicializado');
@@ -49,6 +50,8 @@ class DTemperaturaProvider extends ChangeNotifier {
     final responseTemperaturas =
         DTemperaturas.fromJsonList(json.decode(responseJson));
     print(responseTemperaturas.items);
+    listUltimasTemperaturas = responseTemperaturas.items;
+    notifyListeners();
     return responseTemperaturas.items;
   }
 }
