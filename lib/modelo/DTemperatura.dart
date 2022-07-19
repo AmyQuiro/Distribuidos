@@ -20,7 +20,7 @@ class DTemperaturaModel {
   late String id;
   late double temperatura;
   late double humedad;
-  late DateTime ultimoRegistro;
+  late String ultimoRegistro;
   late bool estado;
 
   DTemperaturaModel({
@@ -34,11 +34,14 @@ class DTemperaturaModel {
   // ignore: non_constant_identifier_names
   DTemperaturaModel.fromJsonMap(Map<String, dynamic> json) {
     final tiempo = json['time'] != null ? json['time'] : json['ultimoRegistro'];
+    final miEstado = json['estado'] != null
+        ? (json['estado']).toString().toLowerCase() == 'true'
+        : false;
     id = (json['id']).toString();
     temperatura = double.parse(json['temp']);
-    humedad = double.parse(json['hum']);
-    ultimoRegistro = DateTime.parse(tiempo);
-    estado = (json['estado']).toString().toLowerCase() == 'true';
+    humedad = json['hum'] != null ? double.parse(json['hum']) : 1;
+    ultimoRegistro = tiempo;
+    estado = miEstado;
   }
 
   factory DTemperaturaModel.fromJson(String str) =>
@@ -54,8 +57,9 @@ class DTemperaturaModel {
   // }
 
   getTime() {
-    final response = ultimoRegistro.minute.toDouble() +
-        (ultimoRegistro.second.toDouble() * 0.01);
+    final miFecha = DateTime.parse(ultimoRegistro);
+    final response =
+        miFecha.minute.toDouble() + (miFecha.second.toDouble() * 0.01);
     // print(response);
     return response;
     // if (tiempo.isEmpty) {
