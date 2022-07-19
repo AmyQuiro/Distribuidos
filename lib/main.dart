@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_listas/helper/push_notifications_services.dart';
 import 'package:flutter_application_listas/modelo/dispositivosModel.dart';
 import 'package:flutter_application_listas/provider/TemperaturaProvider.dart';
-import 'package:flutter_application_listas/provider/dispositivoProvider.dart';
+import 'package:flutter_application_listas/provider/dTemperaturaProvider.dart';
 import 'package:flutter_application_listas/provider/provider_t.dart';
 import 'package:flutter_application_listas/views/disp_view.dart';
 import 'package:flutter_application_listas/views/dispositivos_view.dart';
@@ -32,8 +32,8 @@ class AppState extends StatelessWidget {
           create: (_) => TemperaturaProvider(idDispositivo: ""),
         ),
         ChangeNotifierProvider(
-          create: (_) => dispositivoProvider(),
-          child: DispositivosView(),
+          create: (_) => dTemperaturaProvider(),
+          child: DispositivoView(),
         ),
       ],
       child: MyApp(),
@@ -95,7 +95,7 @@ class _MyAppState extends State<MyApp> {
       navigatorKey: navigatorKey, //navegar
       scaffoldMessengerKey: messengerKey, //sancks
       routes: {
-        'homePage2': (_) => DispositivoHome(),
+        //
         'homeNoti': (_) => HomeNotificacion(),
         'message': (_) => MessageScreen(),
         'GrafMes': (_) => GraficosMes(),
