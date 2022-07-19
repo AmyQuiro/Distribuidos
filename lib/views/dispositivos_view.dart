@@ -3,8 +3,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_listas/modelo/DTemperatura.dart';
 import 'package:flutter_application_listas/modelo/DispositivosModel.dart';
 import 'package:flutter_application_listas/provider/dTemperaturaProvider.dart';
-import 'package:flutter_application_listas/provider/dispositivoProvider.dart';
-import 'package:flutter_application_listas/views/disp_view.dart';
 import 'package:flutter_application_listas/views/dispo_view.dart';
 import 'package:provider/provider.dart';
 

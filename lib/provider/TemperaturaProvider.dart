@@ -30,17 +30,17 @@ class TemperaturaProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<TemperaturaModel>> getUltimasTemeperaturas(
-      {required idDispositivo}) async {
-    DateTime now = DateTime.now();
-    var uri = Uri.parse(
-      '${service.urlBase}support/ultimasTemperaturas?id=$idDispositivo&${now.toString()}',
-    );
+  // Future<List<TemperaturaModel>> getUltimasTemeperaturas(
+  //     {required idDispositivo}) async {
+  //   DateTime now = DateTime.now();
+  //   var uri = Uri.parse(
+  //     '${service.urlBase}support/ultimasTemperaturas?id=$idDispositivo&${now.toString()}',
+  //   );
 
-    final response = await http.get(uri);
-    final responseJson = service.getResponse(response.body);
-    final responseTemperaturas = Temperaturas.fromJsonList(responseJson);
-    print(responseTemperaturas.items);
-    return responseTemperaturas.items;
-  }
+  //   final response = await http.get(uri);
+  //   final responseJson = service.getResponse(response.body);
+  //   final responseTemperaturas = Temperaturas.fromJsonList(responseJson);
+  //   print(responseTemperaturas.items);
+  //   return responseTemperaturas.items;
+  // }
 }

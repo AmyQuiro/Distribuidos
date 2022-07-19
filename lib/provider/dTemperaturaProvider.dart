@@ -14,6 +14,10 @@ class DTemperaturaProvider extends ChangeNotifier {
   API service = API();
   List<DTemperaturaModel> listDTemperaturas = [];
 
+  /*DTemperaturaProvider({required String idDispositivo}) {
+    print('DTemperaturaProvider inicializado');
+    getDTemperaturas();
+  }*/
   DTemperaturaProvider() {
     print('DTemperaturaProvider inicializado');
     getDTemperaturas();
@@ -37,12 +41,13 @@ class DTemperaturaProvider extends ChangeNotifier {
       {required idDispositivo}) async {
     DateTime now = DateTime.now();
     var uri = Uri.parse(
-      '${service.urlBase}support/ultimasTemperaturas?id=$idDispositivo&${now.toString()}',
+      '${service.urlBase}getHistorialPorDia/${idDispositivo}',
     );
 
     final response = await http.get(uri);
-    final responseJson = service.getResponse(response.body);
-    final responseTemperaturas = DTemperaturas.fromJsonList(responseJson);
+    final responseJson = response.body;
+    final responseTemperaturas =
+        DTemperaturas.fromJsonList(json.decode(responseJson));
     print(responseTemperaturas.items);
     return responseTemperaturas.items;
   }

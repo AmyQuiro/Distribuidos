@@ -5,7 +5,9 @@ import 'package:flutter_application_listas/modelo/TemperaturaModel.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../modelo/DTemperatura.dart';
 import '../provider/TemperaturaProvider.dart';
+import '../provider/dTemperaturaProvider.dart';
 
 class GraficosRealTimeScreen extends StatelessWidget {
   final String idDispositivo;
@@ -35,7 +37,7 @@ class GraficosRealTimeScreenF extends StatefulWidget {
 
 class _GraficosRealTimeScreenState extends State<GraficosRealTimeScreenF> {
   late ChartSeriesController _chartSeriesController;
-  late List<TemperaturaModel> chartData;
+  late List<DTemperaturaModel> chartData;
   get math => null;
 
   @override
@@ -45,28 +47,28 @@ class _GraficosRealTimeScreenState extends State<GraficosRealTimeScreenF> {
 
   @override
   Widget build(BuildContext context) {
-    var tempProvider = Provider.of<TemperaturaProvider>(context);
+    var tempProvider = Provider.of<DTemperaturaProvider>(context);
     getDatosEnVivo(provider: tempProvider);
 
-    if (tempProvider.listTemperaturas.isEmpty) {
+    if (tempProvider.listDTemperaturas.isEmpty) {
       return const Scaffold(
           body: Center(
         child: CircularProgressIndicator(),
       ));
     }
-    chartData = tempProvider.listTemperaturas;
+    chartData = tempProvider.listDTemperaturas;
     return SafeArea(
         child: Scaffold(
             body: SfCartesianChart(
-                series: <LineSeries<TemperaturaModel, double>>[
-          LineSeries<TemperaturaModel, double>(
+                series: <LineSeries<DTemperaturaModel, double>>[
+          LineSeries<DTemperaturaModel, double>(
             onRendererCreated: (ChartSeriesController controller) {
               _chartSeriesController = controller;
             },
             dataSource: chartData,
             color: const Color.fromRGBO(192, 108, 132, 1),
-            xValueMapper: (TemperaturaModel sales, _) => sales.getTime(),
-            yValueMapper: (TemperaturaModel sales, _) => sales.temperatura,
+            xValueMapper: (DTemperaturaModel sales, _) => sales.getTime(),
+            yValueMapper: (DTemperaturaModel sales, _) => sales.temperatura,
           )
         ],
                 primaryXAxis: NumericAxis(
@@ -87,7 +89,8 @@ class _GraficosRealTimeScreenState extends State<GraficosRealTimeScreenF> {
 
   int time = 19;
 
-  Future<void> updateDataSource({required TemperaturaProvider provider}) async {
+  Future<void> updateDataSource(
+      {required DTemperaturaProvider provider}) async {
     final listUltimas = await provider.getUltimasTemeperaturas(
         idDispositivo: widget.idDispositivo);
     for (var newData in listUltimas) {
