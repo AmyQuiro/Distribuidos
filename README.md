@@ -1,17 +1,7 @@
-# flutter_application_listas
+El Proyecto de  la materia distribuidos es de lectura de temperatura a través de componentes dht11 con microcontrolador ESP 3286 que se conecta a un servidor que su vez llena una base de datos remota en Heroku   a partir de  base de datos se crea la API rest y que después va consumir nuestra App móvil echa en Flutter
 
-A new Flutter project.
+la base de datos, el servidor, el archivo del microcontrolador y las Api se encuentran en la carpeta Componentes   
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+El postam para las notificaciones push: https://www.postman.com/collections/99c5dcb1988fe616ff27
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# distribuidos_app" 
